@@ -90,7 +90,10 @@ public class IntegerBucketSorter implements Sorter {
    public int findIntLength(int num) throws Exception {
       int len = -1;
       len = String.valueOf(num).length();
-      System.out.println(len);
+      if (len > MAX_DIGIT_LIMIT) {
+         throw new Exception();
+      }
+
       return len;
    }
 
