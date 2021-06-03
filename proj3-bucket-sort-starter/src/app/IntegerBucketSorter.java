@@ -71,7 +71,18 @@ public class IntegerBucketSorter implements Sorter {
     */
    public int findMaxIntLength(int[] array) throws Exception {
       int max = -1;
-      // TODO: Implement this method
+      int intLength = 0;
+
+      if (array.length == 0) {
+         max = 0;
+      } else {
+         for (int i = 0; i < array.length; i++) {
+            intLength = findIntLength(array[i]);
+            if (intLength > max) {
+               max = intLength;
+            }
+         }
+      }
 
       return max;
    }
