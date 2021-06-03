@@ -107,7 +107,7 @@ public class IntegerBucketSorter implements Sorter {
     */
    public int getPlaceValue(int place, int num) {
       int digit = -1;
-      // TODO: Implement this method
+      digit = Integer.parseInt(String.valueOf(num).split("")[place]);
 
       return digit;
    }
