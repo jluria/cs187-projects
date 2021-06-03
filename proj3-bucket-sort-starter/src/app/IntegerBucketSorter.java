@@ -105,10 +105,14 @@ public class IntegerBucketSorter implements Sorter {
     * @param num   the integer we want to extract the digit from.
     * @return the digit at the specified place.
     */
-   public int getPlaceValue(int place, int num) {
+   public int getPlaceValue(int place, int num) throws ArrayIndexOutOfBoundsException {
       int digit = -1;
       String[] digitsArr = String.valueOf(num).split("");
-      digit = Integer.parseInt(digitsArr[digitsArr.length - place]);
+      try {
+         digit = Integer.parseInt(digitsArr[digitsArr.length - place]);
+      } catch (ArrayIndexOutOfBoundsException e) {
+         digit = 0;
+      }
 
       return digit;
    }
