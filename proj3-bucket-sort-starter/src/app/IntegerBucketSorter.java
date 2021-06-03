@@ -89,8 +89,8 @@ public class IntegerBucketSorter implements Sorter {
     */
    public int findIntLength(int num) throws Exception {
       int len = -1;
-      // TODO: Implement this method
-
+      len = String.valueOf(num).length();
+      System.out.println(len);
       return len;
    }
 
@@ -108,6 +108,7 @@ public class IntegerBucketSorter implements Sorter {
    public int getPlaceValue(int place, int num) throws ArrayIndexOutOfBoundsException {
       int digit = -1;
       String[] digitsArr = String.valueOf(num).split("");
+
       try {
          digit = Integer.parseInt(digitsArr[digitsArr.length - place]);
       } catch (ArrayIndexOutOfBoundsException e) {

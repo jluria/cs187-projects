@@ -136,7 +136,7 @@ public class ProjectTests {
       try {
          Field f = sorter.getClass().getDeclaredField("buckets"); // NoSuchFieldException}
          f.setAccessible(true);
-         int[] data = {100, 10, 23};
+         int[] data = { 100, 10, 23 };
          sorter.sort(data);
          sorter.resetBucketValues();
 
