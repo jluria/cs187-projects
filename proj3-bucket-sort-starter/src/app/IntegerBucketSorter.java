@@ -25,7 +25,15 @@ public class IntegerBucketSorter implements Sorter {
     * @throws an Exception if any integer in the array is > MAX_DIGIT_LIMIT.
     */
    public int[] sort(int[] dataArray) throws Exception {
-      // TODO: Implement this method.
+      buckets = new int[10][dataArray.length];
+      resetBucketValues();
+      int maxLength = findMaxIntLength(dataArray);
+
+      for (int i = 1; i <= maxLength; i++) {
+         distribute(dataArray, i);
+         collect(dataArray);
+         resetBucketValues();
+      }
 
       return dataArray;
    }
@@ -42,8 +50,16 @@ public class IntegerBucketSorter implements Sorter {
     *                  integer is written to.
     */
    public void distribute(int[] dataArray, int curPlace) {
-      // TODO: Implement this method.
-
+      int currPlaceVal; // = getPlaceValue(curPlace, dataArray[i]);
+      // int bucketLength = bucket[currPlaceVal].length;
+      for (int i = 0; i < dataArray.length; i++) {
+         currPlaceVal = getPlaceValue(curPlace, dataArray[i]);
+         int j = 0;
+         while (buckets[currPlaceVal][j] != -1) {
+            j++;
+         }
+         buckets[currPlaceVal][j] = dataArray[i];
+      }
    }
 
    /**
@@ -54,7 +70,14 @@ public class IntegerBucketSorter implements Sorter {
     * @param dataArray the integers to be sorted.
     */
    public void collect(int[] dataArray) {
-      // TODO: Implement this method
+      int k = 0;
+
+      for (int i = 0; i < buckets.length; i++) {
+         for (int j = 0; buckets[i][j] != -1 && j < buckets[i].length; j++) {
+            dataArray[k] = buckets[i][j];
+            k++;
+         }
+      }
 
    }
 
@@ -139,7 +162,11 @@ public class IntegerBucketSorter implements Sorter {
     * so that it is properly initialized.
     */
    public void resetBucketValues() {
-      // TODO: Implement this method
+      for (int i = 0; i < buckets.length; i++) {
+         for (int j = 0; j < buckets[i].length; j++) {
+            buckets[i][j] = SENTINEL;
+         }
+      }
 
    }
 }
