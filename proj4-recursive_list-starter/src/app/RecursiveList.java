@@ -24,7 +24,12 @@ public class RecursiveList<T> implements ListInterface<T> {
 
   @Override
   public void insertFirst(T elem) {
-    // TODO: Implement this method.
+    if (this.head != null) {
+      // Node<T> temp = head;
+      head = new Node(elem, head);
+    } else {
+      head = new Node(elem, null);
+    }
 
   }
 
@@ -67,7 +72,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T getFirst() {
     T item = null;
-    // TODO: Implement this method.
+    item = this.head.getData();
 
     return item;
   }
