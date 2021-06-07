@@ -25,7 +25,6 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public void insertFirst(T elem) {
     if (this.head != null) {
-      // Node<T> temp = head;
       head = new Node(elem, head);
     } else {
       head = new Node(elem, null);
@@ -78,9 +77,18 @@ public class RecursiveList<T> implements ListInterface<T> {
   }
 
   @Override
-  public T getLast() {
+  public T getLast() throws IllegalStateException {
     T item = null;
-    // TODO: Implement this method.
+    Node<T> potentialLast = null;
+    if (this.head != null) {
+      potentialLast = this.head;
+      while (potentialLast.getNext() != null) {
+        potentialLast = potentialLast.getNext();
+      }
+      item = potentialLast.getData();
+    } else {
+      throw new IllegalStateException();
+    }
 
     return item;
   }
