@@ -34,7 +34,17 @@ public class RecursiveList<T> implements ListInterface<T> {
 
   @Override
   public void insertLast(T elem) {
-    // TODO: Implement this method.
+    Node<T> newLast = new Node(elem, null);
+    Node<T> oldLast;
+    if (this.head == null) {
+      this.head = newLast;
+    } else {
+      oldLast = this.head;
+      while (oldLast.getNext() != null) {
+        oldLast = oldLast.getNext();
+      }
+      oldLast.setNext(newLast);
+    }
 
   }
 
