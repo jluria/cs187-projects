@@ -24,26 +24,26 @@ public class RecursiveList<T> implements ListInterface<T> {
 
   @Override
   public void insertFirst(T elem) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
   }
 
   @Override
   public void insertLast(T elem) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
   }
 
   @Override
   public void insertAt(int index, T elem) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
   }
 
   @Override
   public T removeFirst() {
     T removedItem = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return removedItem;
   }
@@ -51,7 +51,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T removeLast() {
     T removedItem = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return removedItem;
   }
@@ -59,7 +59,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T removeAt(int i) {
     T removedItem = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return removedItem;
   }
@@ -67,7 +67,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T getFirst() {
     T item = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return item;
   }
@@ -75,7 +75,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T getLast() {
     T item = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return item;
   }
@@ -83,39 +83,39 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T get(int i) {
     T item = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return item;
   }
 
   @Override
   public void remove(T elem) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
   }
 
   @Override
   public int indexOf(T elem) {
     int index = -1;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return index;
   }
 
-
   @Override
   public boolean isEmpty() {
     boolean empty = false;
-      //TODO: Implement this method.
+    if (this.size == 0) {
+      empty = true;
+    }
 
     return empty;
   }
 
-
   public Iterator<T> iterator() {
     Iterator<T> iter = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
-   return iter;
+    return iter;
   }
 }
