@@ -100,8 +100,8 @@ public class RecursiveList<T> implements ListInterface<T> {
   public T getLast() throws IllegalStateException {
     T item = null;
     Node<T> potentialLast = null;
-    if (this.head != null) {
-      potentialLast = this.head;
+    if (head != null) {
+      potentialLast = head;
       while (potentialLast.getNext() != null) {
         potentialLast = potentialLast.getNext();
       }
