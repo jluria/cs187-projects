@@ -39,6 +39,7 @@ public class RecursiveList<T> implements ListInterface<T> {
     } else {
       insertLastHelper(elem, head);
     }
+    size++;
 
   }
 
