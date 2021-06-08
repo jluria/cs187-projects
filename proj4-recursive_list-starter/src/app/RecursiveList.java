@@ -99,18 +99,23 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public T getLast() throws IllegalStateException {
     T item = null;
-    Node<T> potentialLast = null;
     if (head == null) {
       throw new IllegalStateException();
     } else {
-      potentialLast = head;
-      while (potentialLast.getNext() != null) {
-        potentialLast = potentialLast.getNext();
-      }
-      item = potentialLast.getData();
+      item = getLastHelper(head);
     }
 
     return item;
+  }
+
+  private T getLastHelper(Node<T> currentNode) {
+    T last = null;
+    LinkedNodeIterator<T> iterator = new LinkedNodeIterator<T>(currentNode);
+    last = iterator.next();
+    if (iterator.hasNext()) {
+      last = getLastHelper(currentNode.getNext());
+    }
+    return last;
   }
 
   @Override
