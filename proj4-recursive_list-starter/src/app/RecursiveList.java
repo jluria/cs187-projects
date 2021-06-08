@@ -25,7 +25,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   @Override
   public void insertFirst(T elem) {
     head = new Node(elem, head);
-
+    size++;
   }
 
   @Override
