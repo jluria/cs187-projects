@@ -34,16 +34,20 @@ public class RecursiveList<T> implements ListInterface<T> {
 
   @Override
   public void insertLast(T elem) {
-    Node<T> newLast = new Node(elem, null);
-    Node<T> oldLast;
-    if (this.head == null) {
-      this.head = newLast;
+    if (head == null) {
+      head = new Node(elem, null);
     } else {
-      oldLast = this.head;
-      while (oldLast.getNext() != null) {
-        oldLast = oldLast.getNext();
-      }
-      oldLast.setNext(newLast);
+      insertLastHelper(elem, head);
+    }
+
+  }
+
+  private void insertLastHelper(T elem, Node<T> current) {
+    LinkedNodeIterator nodeIterator = new LinkedNodeIterator<T>(current.getNext());
+    if (nodeIterator.hasNext() == false) {
+      current.setNext(new Node(elem, null));
+    } else {
+      insertLastHelper(elem, current.getNext());
     }
 
   }
