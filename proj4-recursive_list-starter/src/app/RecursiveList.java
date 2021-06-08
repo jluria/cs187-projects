@@ -145,8 +145,7 @@ public class RecursiveList<T> implements ListInterface<T> {
   }
 
   public Iterator<T> iterator() {
-    Iterator<T> iter = null;
-    // TODO: Implement this method.
+    Iterator<T> iter = new LinkedNodeIterator<>(head);
 
     return iter;
   }
