@@ -85,9 +85,13 @@ public class RecursiveList<T> implements ListInterface<T> {
   }
 
   @Override
-  public T getFirst() {
+  public T getFirst() throws IllegalStateException {
     T item = null;
-    item = this.head.getData();
+    if (head == null) {
+      throw new IllegalStateException();
+    } else {
+      item = this.head.getData();
+    }
 
     return item;
   }
