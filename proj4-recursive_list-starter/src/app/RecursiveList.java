@@ -90,7 +90,7 @@ public class RecursiveList<T> implements ListInterface<T> {
     if (head == null) {
       throw new IllegalStateException();
     } else {
-      item = this.head.getData();
+      item = head.getData();
     }
 
     return item;
