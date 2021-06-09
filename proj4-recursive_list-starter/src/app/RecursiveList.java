@@ -102,18 +102,18 @@ public class RecursiveList<T> implements ListInterface<T> {
     if (head == null) {
       throw new IllegalStateException();
     } else {
-      item = getLastHelper(head);
+      Iterator<T> iter = iterator();
+      item = getLastHelper(iter);
     }
 
     return item;
   }
 
-  private T getLastHelper(Node<T> currentNode) {
+  private T getLastHelper(Iterator<T> iter) {
     T last = null;
-    LinkedNodeIterator<T> iterator = new LinkedNodeIterator<T>(currentNode);
-    last = iterator.next();
-    if (iterator.hasNext()) {
-      last = getLastHelper(currentNode.getNext());
+    last = iter.next();
+    if (iter.hasNext()) {
+      last = getLastHelper(iter);
     }
     return last;
   }
