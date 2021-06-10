@@ -77,16 +77,22 @@ public class RecursiveList<T> implements ListInterface<T> {
     if (head == null) {
       throw new NullPointerException();
     }
-    while (currentNode.getNext() != null) {
+
+    if (head.getNext() == null) {
+      removedItem = head.getData();
+      head = null;
+      currentNode = null;
+    }
+    while (currentNode != null && currentNode.getNext() != null) {
       prevNode = currentNode;
       currentNode = currentNode.getNext();
     }
-    if (prevNode == null) {
-      head = null;
-    } else {
+    if (prevNode != null) {
       prevNode.setNext(null);
     }
-    removedItem = currentNode.getData();
+    if (currentNode != null) {
+      removedItem = currentNode.getData();
+    }
     size--;
 
     return removedItem;
