@@ -70,9 +70,24 @@ public class RecursiveList<T> implements ListInterface<T> {
   }
 
   @Override
-  public T removeLast() {
+  public T removeLast() throws NullPointerException {
     T removedItem = null;
-    // TODO: Implement this method.
+    Node<T> currentNode = head, prevNode = null;
+
+    if (head == null) {
+      throw new NullPointerException();
+    }
+    while (currentNode.getNext() != null) {
+      prevNode = currentNode;
+      currentNode = currentNode.getNext();
+    }
+    if (prevNode == null) {
+      head = null;
+    } else {
+      prevNode.setNext(null);
+    }
+    removedItem = currentNode.getData();
+    size--;
 
     return removedItem;
   }
