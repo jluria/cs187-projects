@@ -64,6 +64,7 @@ public class RecursiveList<T> implements ListInterface<T> {
       removedItem = this.head.getData();
       this.head = this.head.getNext();
     }
+    size--;
 
     return removedItem;
   }
