@@ -99,9 +99,23 @@ public class RecursiveList<T> implements ListInterface<T> {
   }
 
   @Override
-  public T removeAt(int i) {
+  public T removeAt(int i) throws IndexOutOfBoundsException {
     T removedItem = null;
-    // TODO: Implement this method.
+    Node<T> currentNode = head, prevNode = null;
+    int position = 0;
+
+    if (head == null || (i + 1) > size()) {
+      throw new IndexOutOfBoundsException();
+    }
+
+    while (position < i) {
+      prevNode = currentNode;
+      currentNode = currentNode.getNext();
+      position++;
+    }
+
+    removedItem = currentNode.getData();
+    prevNode.setNext(currentNode.getNext());
 
     return removedItem;
   }
