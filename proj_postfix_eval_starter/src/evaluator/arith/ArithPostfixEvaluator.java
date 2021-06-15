@@ -10,14 +10,17 @@ import stack.LinkedStack;
 import stack.StackInterface;
 import evaluator.PostfixEvaluator;
 
-/** An {@link ArithPostfixEvaluator} is a postfix evaluator over simple arithmetic expressions. */
+/**
+ * An {@link ArithPostfixEvaluator} is a postfix evaluator over simple
+ * arithmetic expressions.
+ */
 public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
 
-  private final StackInterface<Operand<Integer>> stack;
+  private final LinkedStack<Operand<Integer>> stack;
 
   /** Constructs an {@link ArithPostfixEvaluator} */
   public ArithPostfixEvaluator() {
-    // TODO Initialize to your LinkedStack
+    stack = new LinkedStack<Operand<Integer>>();
   }
 
   /** {@inheritDoc} */
