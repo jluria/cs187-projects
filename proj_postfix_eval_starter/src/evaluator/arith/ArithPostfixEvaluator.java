@@ -36,6 +36,18 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
           break;
         case OPERATOR:
           // TODO What do we do when we see an operator?
+          Operator<Integer> operator = token.getOperator();
+          Operand<Integer> newOperand = null;
+          System.out.println("SUCCESS!~!!");
+          System.out.println(operator);
+          if (operator.getNumberOfArguments() == 1) {
+            // TODO: retrieve one operand and perform operation
+          } else {
+            operator.setOperand(0, stack.pop());
+            operator.setOperand(1, stack.pop());
+            newOperand = operator.performOperation();
+          }
+          stack.push(newOperand);
           break;
         default:
           throw new IllegalStateException("Parser returned an invalid Type: " + type);
