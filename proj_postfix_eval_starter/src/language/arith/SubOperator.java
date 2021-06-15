@@ -13,7 +13,7 @@ public class SubOperator extends BinaryOperator<Integer> {
   public Operand<Integer> performOperation() {
     if (op0 == null || op1 == null)
       throw new IllegalStateException("Could not perform subtraction operation prior to operands being set.");
-    Integer result = op1.getValue() - op0.getValue();
+    Integer result = op0.getValue() - op1.getValue();
     return new Operand<Integer>(result);
   }
 
