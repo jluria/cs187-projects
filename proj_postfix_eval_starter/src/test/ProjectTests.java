@@ -67,13 +67,13 @@ public class ProjectTests {
 		assertEquals("MultOperator applied to 5 and 7 should produce 35.", 35, value);
 	}
 
-	// NegateOperator Tests
 	@Test(timeout = 5000, expected = NullPointerException.class)
 	public void testNullArgumentExceptionNegateOperatorPublic() {
 		multOperator.setOperand(0, null);
 		fail("MultOperator should not allow null arguments");
 	}
 
+	// NegateOperator Tests
 	@Test(timeout = 500)
 	public void testGetNumberOfArgumentsNegateOperatorPublic() {
 		assertEquals("Unary operator should have 1 argument.", negOperator.getNumberOfArguments(), 1);
@@ -83,6 +83,15 @@ public class ProjectTests {
 	public void testIllegalArgumentExceptionNegateOperatorPublic() {
 		negOperator.setOperand(2, op0);
 		fail("Unary operator should not except input to position 2");
+	}
+
+	@Test(timeout = 5000)
+	public void testPerformOperationNegateOperatorPublic() {
+		negOperator.setOperand(0, op0);
+
+		Operand<Integer> result = negOperator.performOperation();
+		int value = result.getValue();
+		assertEquals("Operator applied to 5 should produce -5", -5, value);
 	}
 
 	// PlusOperator Tests
