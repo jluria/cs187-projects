@@ -38,12 +38,9 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
           stack.push(token.getOperand());
           break;
         case OPERATOR:
-          // TODO What do we do when we see an operator?
           operatorSeen = true;
           Operator<Integer> operator = token.getOperator();
           Operand<Integer> newOperand = null;
-          System.out.println("SUCCESS!~!!");
-          System.out.println(operator);
           if (operator.getNumberOfArguments() == 1) {
             operator.setOperand(0, stack.pop());
             newOperand = operator.performOperation();
