@@ -54,5 +54,6 @@ public class LinkedStack<T> implements StackInterface<T> {
       newTop.setNext(this.top);
     }
     this.top = newTop;
+    size++;
   }
 }
