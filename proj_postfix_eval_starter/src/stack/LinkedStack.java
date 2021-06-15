@@ -13,10 +13,15 @@ public class LinkedStack<T> implements StackInterface<T> {
   /** {@inheritDoc} */
   @Override
   public T pop() throws StackUnderflowException {
+    T topItem;
     if (this.isEmpty()) {
       throw new StackUnderflowException("Cannot pop a stack with no items");
+    } else {
+      topItem = this.top.getData();
+      this.top = this.top.getNext();
+      size--;
     }
-    return null;
+    return topItem;
   }
 
   /** {@inheritDoc} */
