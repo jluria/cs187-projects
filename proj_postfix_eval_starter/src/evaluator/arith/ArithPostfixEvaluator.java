@@ -28,14 +28,18 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
   @Override
   public Integer evaluate(String expr) throws IllegalPostfixExpressionException {
     ArithPostfixParser parser = new ArithPostfixParser(expr);
+    boolean operatorSeen = false;
+    int operandCount = 0;
     for (Token<Integer> token : parser) {
       Type type = token.getType();
       switch (type) {
         case OPERAND:
+          operandCount++;
           stack.push(token.getOperand());
           break;
         case OPERATOR:
           // TODO What do we do when we see an operator?
+          operatorSeen = true;
           Operator<Integer> operator = token.getOperator();
           Operand<Integer> newOperand = null;
           System.out.println("SUCCESS!~!!");
@@ -53,6 +57,9 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
         default:
           throw new IllegalStateException("Parser returned an invalid Type: " + type);
       }
+    }
+    if (!operatorSeen && operandCount > 1) {
+      throw new IllegalPostfixExpressionException();
     }
     Operand<Integer> finalResult = stack.pop();
     return finalResult.getValue();
