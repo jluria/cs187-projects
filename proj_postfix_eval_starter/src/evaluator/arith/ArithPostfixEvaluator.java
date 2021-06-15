@@ -41,7 +41,8 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
           System.out.println("SUCCESS!~!!");
           System.out.println(operator);
           if (operator.getNumberOfArguments() == 1) {
-            // TODO: retrieve one operand and perform operation
+            operator.setOperand(0, stack.pop());
+            newOperand = operator.performOperation();
           } else {
             operator.setOperand(0, stack.pop());
             operator.setOperand(1, stack.pop());
