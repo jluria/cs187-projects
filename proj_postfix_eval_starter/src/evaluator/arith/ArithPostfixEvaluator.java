@@ -44,8 +44,8 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
             operator.setOperand(0, stack.pop());
             newOperand = operator.performOperation();
           } else {
-            operator.setOperand(0, stack.pop());
             operator.setOperand(1, stack.pop());
+            operator.setOperand(0, stack.pop());
             newOperand = operator.performOperation();
           }
           stack.push(newOperand);
