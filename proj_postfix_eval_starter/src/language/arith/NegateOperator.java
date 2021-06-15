@@ -16,7 +16,13 @@ public class NegateOperator extends UnaryOperator<Integer> {
   // across UnaryOperators.
   @Override
   public Operand<Integer> performOperation() {
-    // TODO: implement the negateoperator version of this method
-    return null;
+    if (op0 == null)
+      throw new IllegalStateException("Could not perform negation operation prior to operand being set.");
+    Integer result = 0 - op0.getValue();
+    return new Operand<Integer>(result);
+  }
+
+  public String toString() {
+    return "!";
   }
 }
