@@ -8,18 +8,23 @@ package stack;
  */
 public class LinkedStack<T> implements StackInterface<T> {
   private int size = 0;
-  private LLNode top = null;
+  private LLNode<T> top = null;
 
   /** {@inheritDoc} */
   @Override
   public T pop() throws StackUnderflowException {
-    // TODO: Implement the stack operation for `pop`!
+    if (this.isEmpty()) {
+      throw new StackUnderflowException("Cannot pop a stack with no items");
+    }
     return null;
   }
 
   /** {@inheritDoc} */
   @Override
   public T top() throws StackUnderflowException {
+    if (this.isEmpty()) {
+      throw new StackUnderflowException("Cannot top a stack that is empty");
+    }
     // TODO: Implement the stack operation for `top`!
     return null;
   }
@@ -44,6 +49,10 @@ public class LinkedStack<T> implements StackInterface<T> {
   /** {@inheritDoc} */
   @Override
   public void push(T elem) {
-    // TODO: Implement the stack operation for `push`!
+    LLNode<T> newTop = new LLNode<T>(elem);
+    if (this.top != null) {
+      newTop.setNext(this.top);
+    }
+    this.top = newTop;
   }
 }
