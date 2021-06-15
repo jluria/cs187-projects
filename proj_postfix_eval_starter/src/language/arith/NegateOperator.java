@@ -13,7 +13,7 @@ public class NegateOperator extends UnaryOperator<Integer> {
   public Operand<Integer> performOperation() {
     if (op0 == null)
       throw new IllegalStateException("Could not perform negation operation prior to operand being set.");
-    Integer result = 0 - op0.getValue();
+    Integer result = -1 * op0.getValue();
     return new Operand<Integer>(result);
   }
 
