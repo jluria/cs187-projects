@@ -11,7 +11,15 @@ public abstract class UnaryOperator<T> implements Operator<T> {
 
   @Override
   public void setOperand(int i, Operand<T> operand) {
-    // TODO: write the unary operator version of this method
+    if (operand == null)
+      throw new NullPointerException("Could not set null operand.");
+    if (i > 0) {
+      throw new IllegalArgumentException("Unary operator only accepts operand 0 but received " + i + ".");
+    } else {
+      if (op0 != null)
+        throw new IllegalStateException("Postion " + i + " has been previously set.");
+      op0 = operand;
+    }
   }
 
 }
