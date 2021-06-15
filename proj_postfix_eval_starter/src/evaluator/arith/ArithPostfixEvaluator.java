@@ -9,6 +9,7 @@ import parser.arith.ArithPostfixParser;
 import stack.LinkedStack;
 import stack.StackInterface;
 import evaluator.PostfixEvaluator;
+import java.lang.Integer;
 
 /**
  * An {@link ArithPostfixEvaluator} is a postfix evaluator over simple
@@ -31,7 +32,7 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
       Type type = token.getType();
       switch (type) {
         case OPERAND:
-          // TODO What do we do when we see an operand?
+          stack.push(token.getOperand());
           break;
         case OPERATOR:
           // TODO What do we do when we see an operator?
@@ -40,7 +41,7 @@ public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
           throw new IllegalStateException("Parser returned an invalid Type: " + type);
       }
     }
-    // TODO What do we return?
-    return null;
+    Operand<Integer> finalResult = stack.pop();
+    return finalResult.getValue();
   }
 }
