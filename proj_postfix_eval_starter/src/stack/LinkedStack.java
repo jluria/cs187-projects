@@ -8,6 +8,7 @@ package stack;
  */
 public class LinkedStack<T> implements StackInterface<T> {
   private int size = 0;
+  private LLNode top = null;
 
   /** {@inheritDoc} */
   @Override
@@ -26,8 +27,11 @@ public class LinkedStack<T> implements StackInterface<T> {
   /** {@inheritDoc} */
   @Override
   public boolean isEmpty() {
-    // TODO: Implement the stack operation for `isEmpty`!
-    return false;
+    boolean isEmpty = false;
+    if (size() == 0) {
+      isEmpty = true;
+    }
+    return isEmpty;
   }
 
   /** {@inheritDoc} */
