@@ -25,8 +25,7 @@ public class LinkedStack<T> implements StackInterface<T> {
     if (this.isEmpty()) {
       throw new StackUnderflowException("Cannot top a stack that is empty");
     }
-    // TODO: Implement the stack operation for `top`!
-    return null;
+    return top.getData();
   }
 
   /** {@inheritDoc} */
