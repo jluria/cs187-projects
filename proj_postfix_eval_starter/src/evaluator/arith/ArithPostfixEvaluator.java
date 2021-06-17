@@ -17,7 +17,7 @@ import java.lang.Integer;
  */
 public class ArithPostfixEvaluator implements PostfixEvaluator<Integer> {
 
-  private final LinkedStack<Operand<Integer>> stack;
+  private final StackInterface<Operand<Integer>> stack;
 
   /** Constructs an {@link ArithPostfixEvaluator} */
   public ArithPostfixEvaluator() {
