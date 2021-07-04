@@ -12,71 +12,77 @@ public class Heap<T> implements PriorityQueueADT<T> {
 
   /**
    * Constructor for the heap.
-   * @param comparator comparator object to define a sorting order for the heap elements.
-   * @param isMaxHeap Flag to set if the heap should be a max heap or a min heap.
+   * 
+   * @param comparator comparator object to define a sorting order for the heap
+   *                   elements.
+   * @param isMaxHeap  Flag to set if the heap should be a max heap or a min heap.
    */
   public Heap(Comparator<T> comparator, boolean isMaxHeap) {
-      //TODO: Implement this method.
+    this.comparator = comparator;
+    this.isMaxHeap = isMaxHeap;
   }
 
   /**
    * This results in the entry at the specified index "bubbling up" to a location
    * such that the property of the heap are maintained. This method should run in
-   * O(log(size)) time.
-   * Note: When enqueue is called, an entry is placed at the next available index in 
-   * the array and then this method is called on that index. 
+   * O(log(size)) time. Note: When enqueue is called, an entry is placed at the
+   * next available index in the array and then this method is called on that
+   * index.
    *
    * @param index the index to bubble up
    */
   public void bubbleUp(int index) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
   }
 
   /**
    * This method results in the entry at the specified index "bubbling down" to a
    * location such that the property of the heap are maintained. This method
-   * should run in O(log(size)) time.
-   * Note: When remove is called, if there are elements remaining in this
-   *  the bottom most element of the heap is placed at
+   * should run in O(log(size)) time. Note: When remove is called, if there are
+   * elements remaining in this the bottom most element of the heap is placed at
    * the 0th index and bubbleDown(0) is called.
-   * 
+   *
    * @param index
    */
   public void bubbleDown(int index) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
   }
 
   /**
    * Test for if the queue is empty.
+   * 
    * @return true if queue is empty, false otherwise.
    */
   public boolean isEmpty() {
     boolean isEmpty = false;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
     return isEmpty;
   }
 
   /**
    * Number of data elements in the queue.
+   * 
    * @return the size
    */
-  public int size(){
+  public int size() {
     int size = -100;
-      //TODO: Implement this method.
-        return size;
+    // TODO: Implement this method.
+    return size;
   }
 
   /**
-   * Compare method to implement max/min heap behavior.  It calls the comparae method from the 
-   * comparator object and multiply its output by 1 and -1 if max and min heap respectively.
-   * TODO: implement the heap compare method
+   * Compare method to implement max/min heap behavior. It calls the comparae
+   * method from the comparator object and multiply its output by 1 and -1 if max
+   * and min heap respectively. TODO: implement the heap compare method
+   * 
    * @param element1 first element to be compared
    * @param element2 second element to be compared
-   * @return positive int if {@code element1 > element2}, 0 if {@code element1 == element2}, negative int otherwise
+   * @return positive int if {@code element1 > element2}, 0 if
+   *         {@code element1 == element2}, negative int otherwise
    */
-  public int compare(T element1 , T element2) {
+  public int compare(T element1, T element2) {
     int result = 0;
-    int compareSign =  -1;
+    int compareSign = -1;
     if (isMaxHeap) {
       compareSign = 1;
     }
@@ -85,38 +91,41 @@ public class Heap<T> implements PriorityQueueADT<T> {
   }
 
   /**
-   * Return the element with highest (or lowest if min heap) priority in the heap 
+   * Return the element with highest (or lowest if min heap) priority in the heap
    * without removing the element.
+   * 
    * @return T, the top element
    * @throws QueueUnderflowException if empty
    */
   public T peek() throws QueueUnderflowException {
-     T data = null;
-      //TODO: Implement this method.
+    T data = null;
+    // TODO: Implement this method.
 
     return data;
-  }  
+  }
 
   /**
-   * Removes and returns the element with highest (or lowest if min heap) priority in the heap.
+   * Removes and returns the element with highest (or lowest if min heap) priority
+   * in the heap.
+   * 
    * @return T, the top element
    * @throws QueueUnderflowException if empty
    */
-  public T dequeue() throws QueueUnderflowException{
+  public T dequeue() throws QueueUnderflowException {
     T data = null;
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
     return data;
   }
 
   /**
    * Enqueue the element.
+   * 
    * @param the new element
    */
   public void enqueue(T newElement) {
-      //TODO: Implement this method.
+    // TODO: Implement this method.
 
   }
-
 
 }
