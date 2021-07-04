@@ -12,12 +12,14 @@ public class Heap<T> implements PriorityQueueADT<T> {
 
   /**
    * Constructor for the heap.
-   * 
+   *
    * @param comparator comparator object to define a sorting order for the heap
    *                   elements.
    * @param isMaxHeap  Flag to set if the heap should be a max heap or a min heap.
    */
   public Heap(Comparator<T> comparator, boolean isMaxHeap) {
+    this.numElements = 0;
+    this.heap = new T[];
     this.comparator = comparator;
     this.isMaxHeap = isMaxHeap;
   }
@@ -50,7 +52,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
 
   /**
    * Test for if the queue is empty.
-   * 
+   *
    * @return true if queue is empty, false otherwise.
    */
   public boolean isEmpty() {
@@ -61,7 +63,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
 
   /**
    * Number of data elements in the queue.
-   * 
+   *
    * @return the size
    */
   public int size() {
@@ -74,7 +76,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    * Compare method to implement max/min heap behavior. It calls the comparae
    * method from the comparator object and multiply its output by 1 and -1 if max
    * and min heap respectively. TODO: implement the heap compare method
-   * 
+   *
    * @param element1 first element to be compared
    * @param element2 second element to be compared
    * @return positive int if {@code element1 > element2}, 0 if
@@ -93,7 +95,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
   /**
    * Return the element with highest (or lowest if min heap) priority in the heap
    * without removing the element.
-   * 
+   *
    * @return T, the top element
    * @throws QueueUnderflowException if empty
    */
@@ -107,7 +109,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
   /**
    * Removes and returns the element with highest (or lowest if min heap) priority
    * in the heap.
-   * 
+   *
    * @return T, the top element
    * @throws QueueUnderflowException if empty
    */
@@ -120,7 +122,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
 
   /**
    * Enqueue the element.
-   * 
+   *
    * @param the new element
    */
   public void enqueue(T newElement) {
