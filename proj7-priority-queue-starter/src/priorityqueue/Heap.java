@@ -35,7 +35,15 @@ public class Heap<T> implements PriorityQueueADT<T> {
    * @param index the index to bubble up
    */
   public void bubbleUp(int index) {
-    // TODO: Implement this method.
+    int parentIndex = (index - 1) / 2;
+    if (index == 0)
+      return;
+    if (comparator.compare(heap[parentIndex], heap[index]) < 0) {
+      T temp = heap[index];
+      heap[index] = heap[parentIndex];
+      heap[parentIndex] = temp;
+      bubbleUp(parentIndex);
+    }
   }
 
   /**
