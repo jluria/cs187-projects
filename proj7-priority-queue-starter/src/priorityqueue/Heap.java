@@ -130,6 +130,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
     T data = null;
     // TODO: Implement this method.
 
+    numElements--;
     return data;
   }
 
@@ -140,7 +141,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public void enqueue(T newElement) {
     // TODO: Implement this method.
-
+    numElements++;
   }
 
 }
