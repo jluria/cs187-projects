@@ -1,5 +1,6 @@
 package priorityqueue;
 
+import java.lang.reflect.Array;
 import java.util.Comparator;
 
 public class Heap<T> implements PriorityQueueADT<T> {
@@ -19,7 +20,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public Heap(Comparator<T> comparator, boolean isMaxHeap) {
     this.numElements = 0;
-    this.heap = new T[];
+    this.heap = (T[]) Array.newInstance(comparator.getClass(), INIT_SIZE);
     this.comparator = comparator;
     this.isMaxHeap = isMaxHeap;
   }
@@ -57,7 +58,9 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public boolean isEmpty() {
     boolean isEmpty = false;
-    // TODO: Implement this method.
+    if (this.numElements == 0) {
+      isEmpty = true;
+    }
     return isEmpty;
   }
 
