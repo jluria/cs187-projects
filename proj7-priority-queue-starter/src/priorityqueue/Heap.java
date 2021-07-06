@@ -114,6 +114,9 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public T peek() throws QueueUnderflowException {
     T data = null;
+    if (size() <= 0) {
+      throw new QueueUnderflowException();
+    }
     // TODO: Implement this method.
 
     return data;
@@ -128,6 +131,9 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public T dequeue() throws QueueUnderflowException {
     T data = null;
+    if (size() <= 0) {
+      throw new QueueUnderflowException();
+    }
     // TODO: Implement this method.
 
     numElements--;
