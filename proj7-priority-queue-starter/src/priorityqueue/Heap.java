@@ -114,7 +114,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public T peek() throws QueueUnderflowException {
     T data = null;
-    if (size() <= 0) {
+    if (isEmpty()) {
       throw new QueueUnderflowException();
     }
     // TODO: Implement this method.
@@ -131,7 +131,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public T dequeue() throws QueueUnderflowException {
     T data = null;
-    if (size() <= 0) {
+    if (isEmpty()) {
       throw new QueueUnderflowException();
     }
     // TODO: Implement this method.
