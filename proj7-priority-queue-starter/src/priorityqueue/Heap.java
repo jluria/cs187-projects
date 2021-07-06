@@ -58,7 +58,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public boolean isEmpty() {
     boolean isEmpty = false;
-    if (this.numElements == 0) {
+    if (size() <= 0) {
       isEmpty = true;
     }
     return isEmpty;
@@ -71,7 +71,9 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public int size() {
     int size = -100;
-    // TODO: Implement this method.
+    if (numElements >= 0) {
+      size = numElements;
+    }
     return size;
   }
 
