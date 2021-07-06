@@ -26,7 +26,7 @@ public class ProjectTests {
     maxHeap = new Heap<Patient>(pAC, true);
   }
 
-  @Test 
+  @Test
   public void testIsEmpty() {
     assertTrue(minHeap.isEmpty());
     assertTrue(maxHeap.isEmpty());
@@ -42,7 +42,7 @@ public class ProjectTests {
     assertTrue(maxHeap.isEmpty());
   }
 
-  @Test 
+  @Test
   public void testEnqueuePeekSize() {
     assertEquals(minHeap.size(), 0);
     assertEquals(minHeap.size(), 0);
@@ -78,7 +78,7 @@ public class ProjectTests {
     maxHeap.peek();
   }
 
-  @Test 
+  @Test
   public void testPeekEnqueueDequeue() {
     boolean exceptionOccurred = false;
     try {
@@ -130,7 +130,7 @@ public class ProjectTests {
     maxHeap.dequeue();
   }
 
-  @Test 
+  @Test
   public void testEnqueueSizeIncreasing() {
     assertEquals(minHeap.size(), 0);
     assertEquals(minHeap.size(), 0);
@@ -150,7 +150,7 @@ public class ProjectTests {
     }
   }
 
-  @Test 
+  @Test
   public void testEnqueueSizeDecreasing() {
     assertEquals(minHeap.size(), 0);
     assertEquals(minHeap.size(), 0);
@@ -170,7 +170,7 @@ public class ProjectTests {
     }
   }
 
-  @Test 
+  @Test
   public void testEnqueueDequeueSizeIncreasing() {
     assertEquals(minHeap.size(), 0);
     assertEquals(minHeap.size(), 0);
@@ -228,7 +228,7 @@ public class ProjectTests {
   }
 
   @Test
-  public void stressTest() {    
+  public void stressTest() {
     String fileName = "large_input.txt";
     TriageSystemParser triageFileParser = new TriageSystemParser();
     try {
