@@ -20,7 +20,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
    */
   public Heap(Comparator<T> comparator, boolean isMaxHeap) {
     this.numElements = 0;
-    this.heap = (T[]) Array.newInstance(comparator.getClass(), INIT_SIZE);
+    this.heap = (T[]) new Object[INIT_SIZE];
     this.comparator = comparator;
     this.isMaxHeap = isMaxHeap;
   }
