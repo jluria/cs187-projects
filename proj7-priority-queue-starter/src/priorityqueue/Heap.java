@@ -146,7 +146,8 @@ public class Heap<T> implements PriorityQueueADT<T> {
    * @param the new element
    */
   public void enqueue(T newElement) {
-    // TODO: Implement this method.
+    heap[size()] = newElement;
+    bubbleUp(size());
     numElements++;
   }
 
