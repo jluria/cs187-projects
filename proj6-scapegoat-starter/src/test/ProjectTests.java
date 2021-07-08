@@ -71,6 +71,8 @@ public class ProjectTests {
   @Test
   public void testGet() {
     assertEquals(FOO, oneNodeTree.get(FOO));
+    assertEquals(ECHO, threeNodeTree.get(ECHO));
+    assertEquals(GEORGE, threeNodeTree.get(GEORGE));
   }
 
   @Test

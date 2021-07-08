@@ -118,9 +118,44 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     }
   }
 
-  public T get(T t) {
-    // TODO: Implement the get() method
-    return null;
+  public T get(T t) throws NullPointerException {
+    if (t == null) {
+      throw new NullPointerException("Cannot search for a null item.");
+    }
+    BSTNode<T> rootNode = root;
+    T data = null;
+
+    if (rootNode != null) {
+      int comparedValue = rootNode.getData().compareTo(t);
+
+      if (comparedValue == 0) {
+        data = rootNode.getData();
+      } else if (comparedValue > 0 && rootNode.getLeft() != null) {
+        data = getFromSubtree(t, rootNode.getLeft());
+      } else if (rootNode.getRight() != null) {
+        data = getFromSubtree(t, rootNode.getRight());
+      }
+
+    }
+
+    return data;
+  }
+
+  public T getFromSubtree(T t, BSTNode<T> node) {
+    T data = null;
+
+    int comparedValue = node.getData().compareTo(t);
+    if (comparedValue == 0) {
+      data = node.getData();
+    } else if (comparedValue > 0 && node.getLeft() != null) {
+      data = getFromSubtree(t, node.getLeft());
+    } else {
+      if (node.getRight() != null) {
+        data = getFromSubtree(t, node.getRight());
+      }
+    }
+
+    return data;
   }
 
   public void add(T t) {
