@@ -117,7 +117,7 @@ public class Heap<T> implements PriorityQueueADT<T> {
     if (isEmpty()) {
       throw new QueueUnderflowException();
     }
-    // TODO: Implement this method.
+    data = heap[0];
 
     return data;
   }
