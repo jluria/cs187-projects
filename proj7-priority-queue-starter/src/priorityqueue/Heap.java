@@ -2,6 +2,7 @@ package priorityqueue;
 
 import java.lang.reflect.Array;
 import java.util.Comparator;
+import java.util.Arrays;
 
 public class Heap<T> implements PriorityQueueADT<T> {
 
@@ -146,9 +147,27 @@ public class Heap<T> implements PriorityQueueADT<T> {
    * @param the new element
    */
   public void enqueue(T newElement) {
+    if (size() == heap.length)
+      heap = increaseHeapSize(heap);
+    if (isMaxHeap)
+      System.out.println(Arrays.toString(heap));
     heap[size()] = newElement;
     bubbleUp(size());
     numElements++;
+  }
+
+  /**
+   *
+   * @param fullHeap is the heap when there is no available index
+   * @return a heap twice the size, which is
+   */
+
+  public T[] increaseHeapSize(T[] fullHeap) {
+    T[] newHeap = (T[]) new Object[fullHeap.length * 2];
+    for (int i = 0; i < fullHeap.length; i++) {
+      newHeap[i] = fullHeap[i];
+    }
+    return newHeap;
   }
 
 }
