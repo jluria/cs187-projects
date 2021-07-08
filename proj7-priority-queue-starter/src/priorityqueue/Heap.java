@@ -56,7 +56,43 @@ public class Heap<T> implements PriorityQueueADT<T> {
    * @param index
    */
   public void bubbleDown(int index) {
-    // TODO: Implement this method.
+    int preferableChild = bdSwapIndex((index * 2) + 1, (index * 2) + 2);
+    T temp;
+
+    if (preferableChild == -1) {
+      return;
+    } else {
+      if (compare(heap[preferableChild], heap[index]) > 0) {
+        temp = heap[preferableChild];
+        heap[preferableChild] = heap[index];
+        heap[index] = temp;
+        bubbleDown(preferableChild);
+      }
+    }
+  }
+
+  /**
+   *
+   * @param left  potential left child index
+   * @param right potential right child index
+   * @return most appropriate index to check for swapping with parent node
+   */
+  public int bdSwapIndex(int left, int right) {
+    int chosenIndex = -1;
+
+    if (right >= size() && left < size()) {
+      chosenIndex = left;
+    }
+
+    if (right < size() && left < size()) {
+      if (compare(heap[left], heap[right]) > 0) {
+        chosenIndex = left;
+      } else if (compare(heap[right], heap[left]) >= 0) {
+        chosenIndex = right;
+      }
+    }
+
+    return chosenIndex;
   }
 
   /**
@@ -134,9 +170,13 @@ public class Heap<T> implements PriorityQueueADT<T> {
     if (isEmpty()) {
       throw new QueueUnderflowException();
     }
-    // TODO: Implement this method.
 
+    data = heap[0];
+    heap[0] = heap[size() - 1];
+    heap[size() - 1] = null;
     numElements--;
+    bubbleDown(0);
+
     return data;
   }
 
