@@ -15,17 +15,29 @@ import org.junit.Test;
 import org.junit.rules.Timeout;
 
 public class ProjectTests {
-  @Rule public Timeout timeout = new Timeout(1L, TimeUnit.SECONDS);
+  @Rule
+  public Timeout timeout = new Timeout(1L, TimeUnit.SECONDS);
 
   private BSTInterface<Integer> emptyTree;
   private BSTInterface<String> oneNodeTree;
+  private BSTInterface<String> twoNodeTree;
+  private BSTInterface<String> threeNodeTree;
   private static final String FOO = "foo";
+  private static final String ECHO = "echo";
+  private static final String GEORGE = "george";
 
   @Before
   public void beforeBSTTests() {
     emptyTree = new BinarySearchTree<Integer>();
     oneNodeTree = new BinarySearchTree<String>();
+    twoNodeTree = new BinarySearchTree<String>();
+    threeNodeTree = new BinarySearchTree<String>();
     oneNodeTree.add(FOO);
+    twoNodeTree.add(FOO);
+    twoNodeTree.add(ECHO);
+    threeNodeTree.add(FOO);
+    threeNodeTree.add(ECHO);
+    threeNodeTree.add(GEORGE);
   }
 
   @Test
@@ -47,6 +59,8 @@ public class ProjectTests {
   @Test
   public void testContains() {
     assertTrue(oneNodeTree.contains(FOO));
+    assertTrue(twoNodeTree.contains(ECHO));
+    assertTrue(threeNodeTree.contains(GEORGE));
   }
 
   @Test
@@ -168,11 +182,11 @@ public class ProjectTests {
 
   @Test
   public void testScapegoatRemove() {
-    for (int i : new int[] {3, 1, 5, 0, 4, 2, 6}) {
+    for (int i : new int[] { 3, 1, 5, 0, 4, 2, 6 }) {
       tree.add(i);
     }
 
-    for (int i : new int[] {1, 2, 0, 4}) {
+    for (int i : new int[] { 1, 2, 0, 4 }) {
       tree.remove(i);
     }
 

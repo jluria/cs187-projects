@@ -23,9 +23,36 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     }
   }
 
-  public boolean contains(T t) {
-    // TODO: Implement the contains() method
-    return false;
+  public boolean contains(T t) throws NullPointerException {
+    if (t == null) {
+      throw new NullPointerException("Cannot search for a nonexistant node");
+    }
+    BSTNode<T> rootNode = root;
+    boolean containsSearch = false;
+
+    if (rootNode.getData().compareTo(t) == 0) {
+      containsSearch = true;
+    } else if (rootNode.getData().compareTo(t) > 0) {
+      containsSearch = containsRecursive(t, rootNode.getLeft());
+    } else {
+      containsSearch = containsRecursive(t, rootNode.getRight());
+    }
+
+    return containsSearch;
+  }
+
+  public boolean containsRecursive(T t, BSTNode<T> currentNode) {
+    boolean found = false;
+
+    if (currentNode.getData().compareTo(t) == 0) {
+      found = true;
+    } else if (currentNode.getData().compareTo(t) > 0) {
+      found = containsRecursive(t, currentNode.getLeft());
+    } else {
+      found = containsRecursive(t, currentNode.getRight());
+    }
+
+    return found;
   }
 
   public boolean remove(T t) {
@@ -86,7 +113,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     return null;
   }
 
-
   public void add(T t) {
     if (t == null) {
       throw new NullPointerException();
@@ -113,13 +139,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     return null;
   }
 
-
   @Override
   public T getMaximum() {
     // TODO: Implement the getMaximum() method
     return null;
   }
-
 
   @Override
   public int height() {
@@ -127,19 +151,16 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     return -2;
   }
 
-
   public Iterator<T> preorderIterator() {
     // TODO: Implement the preorderIterator() method
     return null;
   }
-
 
   public Iterator<T> inorderIterator() {
     Queue<T> queue = new LinkedList<T>();
     inorderTraverse(queue, root);
     return queue.iterator();
   }
-
 
   private void inorderTraverse(Queue<T> queue, BSTNode<T> node) {
     if (node != null) {
@@ -154,13 +175,11 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     return null;
   }
 
-
   @Override
   public boolean equals(BSTInterface<T> other) {
     // TODO: Implement the equals() method
     return false;
   }
-
 
   @Override
   public boolean sameValues(BSTInterface<T> other) {
@@ -179,7 +198,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
   public void balance() {
     // TODO: Implement the balanceHelper() method
   }
-
 
   @Override
   public BSTNode<T> getRoot() {
@@ -210,8 +228,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
       }
       if (cursor.getRight() != null) {
         // add edge from cursor to right child
-        dot +=
-            cursor.getData().toString() + " -> " + cursor.getRight().getData().toString() + ";\n";
+        dot += cursor.getData().toString() + " -> " + cursor.getRight().getData().toString() + ";\n";
         queue.add(cursor.getRight());
       } else {
         // add dummy node
@@ -225,9 +242,9 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
   }
 
   public static void main(String[] args) {
-    for (String r : new String[] {"a", "b", "c", "d", "e", "f", "g"}) {
+    for (String r : new String[] { "a", "b", "c", "d", "e", "f", "g" }) {
       BSTInterface<String> tree = new BinarySearchTree<String>();
-      for (String s : new String[] {"d", "b", "a", "c", "f", "e", "g"}) {
+      for (String s : new String[] { "d", "b", "a", "c", "f", "e", "g" }) {
         tree.add(s);
       }
       Iterator<String> iterator = tree.inorderIterator();
@@ -256,7 +273,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     }
 
     BSTInterface<String> tree = new BinarySearchTree<String>();
-    for (String r : new String[] {"a", "b", "c", "d", "e", "f", "g"}) {
+    for (String r : new String[] { "a", "b", "c", "d", "e", "f", "g" }) {
       tree.add(r);
     }
     System.out.println(toDotFormat(tree.getRoot()));
