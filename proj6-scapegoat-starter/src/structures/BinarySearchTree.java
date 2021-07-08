@@ -30,12 +30,18 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     BSTNode<T> rootNode = root;
     boolean containsSearch = false;
 
-    if (rootNode.getData().compareTo(t) == 0) {
-      containsSearch = true;
-    } else if (rootNode.getData().compareTo(t) > 0) {
-      containsSearch = containsRecursive(t, rootNode.getLeft());
-    } else {
-      containsSearch = containsRecursive(t, rootNode.getRight());
+    if (rootNode != null) {
+      if (rootNode.getData().compareTo(t) == 0) {
+        containsSearch = true;
+      } else if (rootNode.getData().compareTo(t) > 0) {
+        if (rootNode.getLeft() != null) {
+          containsSearch = containsRecursive(t, rootNode.getLeft());
+        }
+      } else {
+        if (rootNode.getRight() != null) {
+          containsSearch = containsRecursive(t, rootNode.getRight());
+        }
+      }
     }
 
     return containsSearch;
@@ -47,9 +53,13 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     if (currentNode.getData().compareTo(t) == 0) {
       found = true;
     } else if (currentNode.getData().compareTo(t) > 0) {
-      found = containsRecursive(t, currentNode.getLeft());
+      if (currentNode.getLeft() != null) {
+        found = containsRecursive(t, currentNode.getLeft());
+      }
     } else {
-      found = containsRecursive(t, currentNode.getRight());
+      if (currentNode.getRight() != null) {
+        found = containsRecursive(t, currentNode.getRight());
+      }
     }
 
     return found;
