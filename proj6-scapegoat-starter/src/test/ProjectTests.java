@@ -40,10 +40,6 @@ public class ProjectTests {
     threeNodeTree.add(FOO);
     threeNodeTree.add(ECHO);
     threeNodeTree.add(GEORGE);
-
-    for (int i = 0; i < 25; i++) {
-      deepTree.add(i);
-    }
   }
 
   @Test
@@ -102,6 +98,10 @@ public class ProjectTests {
 
   @Test
   public void testHeight() {
+    for (int i = 0; i < 25; i++) {
+      deepTree.add(i);
+    }
+
     assertEquals(-1, emptyTree.height());
     assertEquals(0, oneNodeTree.height());
     assertEquals(24, deepTree.height());
