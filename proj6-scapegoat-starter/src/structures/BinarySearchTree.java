@@ -3,6 +3,7 @@ package structures;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.lang.Math;
 
 public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T> {
   protected BSTNode<T> root;
@@ -210,8 +211,21 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
 
   @Override
   public int height() {
-    // TODO: Implement the height() method
-    return -2;
+    int totalHeight = 0;
+    if (root == null) {
+      totalHeight = -1;
+    } else {
+      totalHeight = Math.max(getHeightBelow(root.getLeft()), getHeightBelow(root.getRight()));
+    }
+    return totalHeight;
+  }
+
+  private int getHeightBelow(BSTNode<T> node) {
+    int heightFromHere = 0;
+    if (node != null) {
+      heightFromHere = 1 + Math.max(getHeightBelow(node.getLeft()), getHeightBelow(node.getRight()));
+    }
+    return heightFromHere;
   }
 
   public Iterator<T> preorderIterator() {
