@@ -198,10 +198,12 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     T data = null;
     BSTNode<T> currentNode = (root != null) ? root : null;
 
-    while (currentNode.getRight() != null) {
-      currentNode = currentNode.getRight();
+    if (currentNode != null) {
+      while (currentNode.getRight() != null) {
+        currentNode = currentNode.getRight();
+      }
+      data = currentNode.getData();
     }
-    data = currentNode.getData();
 
     return data;
   }
