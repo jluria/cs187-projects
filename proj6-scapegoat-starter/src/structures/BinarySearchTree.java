@@ -4,6 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.lang.Math;
+import java.util.Arrays;
 
 public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T> {
   protected BSTNode<T> root;
@@ -271,9 +272,25 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
   }
 
   @Override
-  public boolean equals(BSTInterface<T> other) {
-    // TODO: Implement the equals() method
-    return false;
+  public boolean equals(BSTInterface<T> other) throws NullPointerException {
+    if (other == null) {
+      throw new NullPointerException();
+    }
+    Iterator<T> otherIter = other.preorderIterator();
+    Iterator<T> thisIter = preorderIterator();
+    boolean isCopy = true;
+
+    if (other.size() == size()) {
+      while (thisIter.hasNext()) {
+        if (thisIter.next().compareTo(otherIter.next()) != 0) {
+          isCopy = false;
+        }
+      }
+    } else {
+      isCopy = false;
+    }
+
+    return isCopy;
   }
 
   @Override
