@@ -277,9 +277,34 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
   }
 
   @Override
-  public boolean sameValues(BSTInterface<T> other) {
-    // TODO: Implement the sameValues() method
-    return false;
+  public boolean sameValues(BSTInterface<T> other) throws NullPointerException {
+    if (other == null) {
+      throw new NullPointerException();
+    }
+    Iterator<T> otherIter = other.inorderIterator();
+    Iterator<T> thisIter = inorderIterator();
+    Object[] otherValues = new Object[other.size()];
+    Object[] theseValues = new Object[size()];
+    boolean hasSameValues = true;
+
+    for (int i = 0; i < other.size(); i++) {
+      otherValues[i] = otherIter.next();
+    }
+
+    for (int j = 0; j < size(); j++) {
+      theseValues[j] = thisIter.next();
+    }
+
+    if (otherValues.length == theseValues.length) {
+      for (int k = 0; k < size(); k++) {
+        if (otherValues[k] != theseValues[k]) {
+          hasSameValues = false;
+          break;
+        }
+      }
+    }
+
+    return hasSameValues;
   }
 
   @Override
