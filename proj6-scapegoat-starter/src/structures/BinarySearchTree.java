@@ -232,7 +232,6 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     Queue<T> queue = new LinkedList<T>();
     preorderTraverse(queue, root);
     return queue.iterator();
-    // TODO: Implement the preorderIterator() method
   }
 
   private void preorderTraverse(Queue<T> queue, BSTNode<T> node) {
@@ -258,8 +257,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
   }
 
   public Iterator<T> postorderIterator() {
-    // TODO: Implement the postorderIterator() method
-    return null;
+    Queue<T> queue = new LinkedList<T>();
+    postorderTraverse(queue, root);
+    return queue.iterator();
+  }
+
+  private void postorderTraverse(Queue<T> queue, BSTNode<T> node) {
+    if (node != null) {
+      postorderTraverse(queue, node.getLeft());
+      postorderTraverse(queue, node.getRight());
+      queue.add(node.getData());
+    }
   }
 
   @Override
