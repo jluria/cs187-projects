@@ -85,6 +85,7 @@ public class ProjectTests {
   @Test
   public void testGetMinimum() {
     assertEquals(null, emptyTree.getMinimum());
+    assertEquals(ECHO, threeNodeTree.getMinimum());
   }
 
   @Test

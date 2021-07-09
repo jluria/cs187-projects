@@ -180,8 +180,17 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
 
   @Override
   public T getMinimum() {
-    // TODO: Implement the getMinimum() method
-    return null;
+    T data = null;
+    BSTNode<T> currentNode = (root != null) ? root : null;
+
+    if (currentNode != null) {
+      while (currentNode.getLeft() != null) {
+        currentNode = currentNode.getLeft();
+      }
+      data = currentNode.getData();
+    }
+
+    return data;
   }
 
   @Override
