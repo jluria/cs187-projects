@@ -47,7 +47,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     return containsSearch;
   }
 
-  public boolean containsRecursive(T t, BSTNode<T> currentNode) {
+  private boolean containsRecursive(T t, BSTNode<T> currentNode) {
     boolean found = false;
 
     if (currentNode.getData().compareTo(t) == 0) {
@@ -141,7 +141,7 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
     return data;
   }
 
-  public T getFromSubtree(T t, BSTNode<T> node) {
+  private T getFromSubtree(T t, BSTNode<T> node) {
     T data = null;
 
     int comparedValue = node.getData().compareTo(t);
