@@ -90,6 +90,7 @@ public class ProjectTests {
   @Test
   public void testGetMaximum() {
     assertEquals(FOO, oneNodeTree.getMaximum());
+    assertEquals(GEORGE, threeNodeTree.getMaximum());
   }
 
   @Test

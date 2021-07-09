@@ -186,8 +186,15 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
 
   @Override
   public T getMaximum() {
-    // TODO: Implement the getMaximum() method
-    return null;
+    T data = null;
+    BSTNode<T> currentNode = (root != null) ? root : null;
+
+    while (currentNode.getRight() != null) {
+      currentNode = currentNode.getRight();
+    }
+    data = currentNode.getData();
+
+    return data;
   }
 
   @Override
