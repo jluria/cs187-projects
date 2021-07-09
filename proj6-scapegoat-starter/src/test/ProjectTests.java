@@ -19,6 +19,7 @@ public class ProjectTests {
   public Timeout timeout = new Timeout(1L, TimeUnit.SECONDS);
 
   private BSTInterface<Integer> emptyTree;
+  private BSTInterface<Integer> deepTree;
   private BSTInterface<String> oneNodeTree;
   private BSTInterface<String> twoNodeTree;
   private BSTInterface<String> threeNodeTree;
@@ -29,6 +30,7 @@ public class ProjectTests {
   @Before
   public void beforeBSTTests() {
     emptyTree = new BinarySearchTree<Integer>();
+    deepTree = new BinarySearchTree<Integer>();
     oneNodeTree = new BinarySearchTree<String>();
     twoNodeTree = new BinarySearchTree<String>();
     threeNodeTree = new BinarySearchTree<String>();
@@ -38,6 +40,10 @@ public class ProjectTests {
     threeNodeTree.add(FOO);
     threeNodeTree.add(ECHO);
     threeNodeTree.add(GEORGE);
+
+    for (int i = 0; i < 25; i++) {
+      deepTree.add(i);
+    }
   }
 
   @Test
@@ -98,6 +104,7 @@ public class ProjectTests {
   public void testHeight() {
     assertEquals(-1, emptyTree.height());
     assertEquals(0, oneNodeTree.height());
+    assertEquals(24, deepTree.height());
   }
 
   @Test
