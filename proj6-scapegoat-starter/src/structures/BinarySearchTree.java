@@ -334,7 +334,29 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
   @Override
   @SuppressWarnings("unchecked")
   public void balance() {
-    // TODO: Implement the balanceHelper() method
+    Iterator<T> iter = inorderIterator();
+    int size = size();
+    T[] values = (T[]) new Comparable[size];
+
+    for (int i = 0; i < size; i++) {
+      values[i] = iter.next();
+    }
+
+    root = null;
+    balanceHelper(values, 0, size - 1);
+  }
+
+  public void balanceHelper(T[] values, int low, int high) {
+    if (low == high) {
+      add(values[low]);
+    } else if ((low + 1) == high) {
+      add(values[low]);
+      add(values[high]);
+    } else {
+      int mid = (low + high) / 2;
+      add(values[mid]);
+      balanceHelper(values, low, mid - 1);
+    }
   }
 
   @Override
