@@ -317,8 +317,18 @@ public class BinarySearchTree<T extends Comparable<T>> implements BSTInterface<T
 
   @Override
   public boolean isBalanced() {
-    // TODO: Implement the isBalanced() method
-    return false;
+    boolean isBalanced = false;
+
+    if (size() == 0) {
+      isBalanced = true;
+    } else {
+      int height = height();
+      int size = size();
+      if (size >= Math.pow(2, height) && size < Math.pow(2, (height + 1))) {
+        isBalanced = true;
+      }
+    }
+    return isBalanced;
   }
 
   @Override
