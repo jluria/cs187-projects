@@ -1,6 +1,7 @@
 package graph;
 
 import java.util.ArrayList;
+import java.util.ListIterator;
 
 /**
  * This class implements general operations on a graph as specified by
@@ -98,8 +99,30 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
    * data passed in does not exist.
    */
   public ArrayList<T> getAdjacentData(T data) throws Exception {
-    // TODO: Implement this method.
-    return null;
+    ArrayList<T> connectedVertices = new ArrayList<T>();
+    int edgeDataIndex = -1;
+
+    for (int i = 0; i < vertices.size(); i++) {
+      if (vertices.get(i).getData().equals(data)) {
+        edgeDataIndex = i;
+        break;
+      }
+    }
+
+    if (edgeDataIndex == -1) {
+      throw new Exception("Vertex with provided data does not exist.");
+    }
+
+    ListIterator<Integer> edgeIterator = adjacencyMatrix.get(edgeDataIndex).listIterator();
+
+    while (edgeIterator.hasNext()) {
+      if (edgeIterator.next() == 1) {
+        Vertex<T> connectedVertex = vertices.get(edgeIterator.previousIndex());
+        connectedVertices.add(connectedVertex.getData());
+      }
+    }
+
+    return connectedVertices;
   }
 
   /**
