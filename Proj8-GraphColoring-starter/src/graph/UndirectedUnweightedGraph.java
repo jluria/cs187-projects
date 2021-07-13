@@ -47,8 +47,14 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
    * Return true if the graph contains a vertex with this data, false otherwise.
    */
   public boolean hasVertex(T data) {
-    // TODO: Implement this method.
-    return false;
+    boolean vertexPresent = false;
+    for (int i = 0; i < vertices.size(); i++) {
+      T vertexData = vertices.get(i).getData();
+      if (vertexData.equals(data)) {
+        vertexPresent = true;
+      }
+    }
+    return vertexPresent;
   }
 
   /**
