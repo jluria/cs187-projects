@@ -75,8 +75,9 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
    * Returns the total number of vertices in the graph.
    */
   public int getNumVertices() {
-    // TODO: Implement this method.
-    return -1;
+    int numVertices = 0;
+    numVertices = vertices.size();
+    return numVertices;
   }
 
   /**
