@@ -18,6 +18,8 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
   private int MAX_VERTICES;
   private int MAX_COLORS;
   private ArrayList<Vertex<T>> vertices;
+  private ArrayList<ArrayList<Integer>> adjacencyMatrix;
+  private int numEdges;
   // TODO: Declare class variables here.
 
   /**
@@ -27,6 +29,7 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
     MAX_VERTICES = maxVertices;
     MAX_COLORS = maxColors;
     vertices = new ArrayList<Vertex<T>>();
+    adjacencyMatrix = new ArrayList<ArrayList<Integer>>();
     // TODO: Implement the rest of this method.
 
   }
@@ -41,6 +44,11 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
     }
     Vertex<T> newVertex = new Vertex<T>(data);
     vertices.add(newVertex);
+
+    ArrayList<Integer> newRow = new ArrayList<Integer>();
+    adjacencyMatrix.add(newRow);
+
+    adjacencyMatrix.forEach((row) -> row.add(0));
   }
 
   /**
@@ -62,8 +70,25 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
    * one or both vertices do not exist.
    */
   public void addEdge(T data1, T data2) throws Exception {
-    // TODO: Implement this method.
+    int data1Index = -1;
+    int data2Index = -1;
 
+    for (int i = 0; i < vertices.size(); i++) {
+      Vertex<T> vertex = vertices.get(i);
+      if (vertex.getData().equals(data1)) {
+        data1Index = i;
+      } else if (vertex.getData().equals(data2)) {
+        data2Index = i;
+      }
+    }
+
+    if (data1Index == -1 || data2Index == -1) {
+      throw new Exception("One or both vertices not found.");
+    } else {
+      adjacencyMatrix.get(data1Index).set(data2Index, 1);
+      adjacencyMatrix.get(data2Index).set(data1Index, 1);
+      numEdges++;
+    }
   }
 
   /**
@@ -90,8 +115,7 @@ public class UndirectedUnweightedGraph<T> implements UndirectedGraphADT<T> {
    * Returns the total number of edges in the graph.
    */
   public int getNumEdges() {
-    // TODO: Implement this method.
-    return -1;
+    return this.numEdges;
   }
 
   /**
